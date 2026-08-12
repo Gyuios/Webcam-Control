@@ -1,0 +1,16 @@
+CONTROL WEBCAM
+Licencia propietaria
+
+Copyright © 2026 Gyuios. Todos los derechos reservados.
+
+Este programa, su código fuente, binarios, recursos, documentación y cualquier
+material asociado son propiedad exclusiva de Gyuios.
+
+Queda prohibido copiar, modificar, adaptar, descompilar, distribuir, publicar,
+vender, sublicenciar, alquilar, ceder, reutilizar o explotar total o parcialmente
+el programa o su código, por cualquier medio, sin autorización previa y por
+escrito de Gyuios.
+
+La posesión o el uso del programa no concede ningún derecho de propiedad
+intelectual ni licencia implícita distinta de la que Gyuios otorgue expresamente
+por escrito.

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control Webcam</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">◉</div>
+          <div>
+            <h1>Control Webcam</h1>
+            <p>Configuración de imagen y cámara</p>
+          </div>
+        </div>
+        <label class="theme-switch" for="theme-toggle">
+          <span class="theme-icon">☾</span>
+          <span>Modo noche</span>
+          <input id="theme-toggle" type="checkbox" role="switch" />
+          <span class="switch-track"><span></span></span>
+        </label>
+      </header>
+
+      <section class="device-bar surface">
+        <div class="device-row">
+          <label class="field-label" for="camera-select">Cámara</label>
+          <select id="camera-select" aria-label="Seleccionar cámara">
+            <option>Buscando cámaras…</option>
+          </select>
+          <button class="button button-secondary" id="refresh-cameras">Actualizar</button>
+        </div>
+        <div class="device-row profile-row">
+          <label class="field-label" for="profile-select">Perfil</label>
+          <select id="profile-select" aria-label="Seleccionar perfil">
+            <option value="">Sin perfil seleccionado</option>
+          </select>
+          <button class="button button-quiet" id="save-profile">Guardar</button>
+          <button class="button button-quiet danger" id="delete-profile">Eliminar</button>
+          <button class="button button-primary" id="restore-defaults">Restablecer todo</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <article class="settings-card surface">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">IMAGEN</p>
+              <h2>Ajustes</h2>
+            </div>
+            <span class="connection" id="camera-state"><i></i> Listo para conectar</span>
+          </div>
+          <div id="control-list" class="control-list" aria-label="Ajustes de cámara"></div>
+        </article>
+
+        <article class="preview-card surface">
+          <div class="card-heading preview-heading">
+            <div>
+              <p class="eyebrow">MONITOR</p>
+              <h2>Vista previa</h2>
+            </div>
+            <button class="button button-primary" id="preview-toggle">Iniciar vista previa</button>
+          </div>
+          <div class="preview-stage" id="preview-stage">
+            <div class="preview-empty" id="preview-empty">
+              <div class="camera-glyph">◉</div>
+              <strong>Vista previa desactivada</strong>
+              <span>Selecciona una cámara y activa el monitor.</span>
+            </div>
+            <img id="preview-image" class="preview-image" alt="Vista previa en directo de la cámara" hidden />
+            <div class="preview-grid" aria-hidden="true"></div>
+          </div>
+          <footer class="preview-footer">
+            <span id="preview-status">Sin transmisión</span>
+            <span>16:9 · Ajuste automático</span>
+          </footer>
+        </article>
+      </section>
+      <footer class="app-credit" aria-label="Información de copyright">
+        © 2026 Gyuios. Todos los derechos reservados.
+      </footer>
+    </main>
+    <template id="control-template">
+      <section class="control-row">
+        <div class="control-name">
+          <strong></strong>
+          <span></span>
+        </div>
+        <input class="slider" type="range" />
+        <button class="auto-button" type="button">Auto.</button>
+        <output class="value-box"></output>
+        <button class="reset-button" type="button" title="Restablecer este ajuste">↺</button>
+      </section>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>
