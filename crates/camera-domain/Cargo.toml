@@ -1,0 +1,10 @@
+[package]
+name = "camera-domain"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Camera ownership and state-machine rules for Webcam-Control"
+
+[dependencies]
+camera-protocol = { path = "../camera-protocol" }
+serde = { version = "1", features = ["derive"] }

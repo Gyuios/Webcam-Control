@@ -8,10 +8,15 @@ pnpm-debug.log*
 # Build output
 dist/
 build/
+**/bin/
+**/obj/
+native/virtual-camera-control/virtual-.*/
 
 # Tauri / Rust
 src-tauri/target/
+src-tauri/gen/
 target/
+target-*/
 **/*.rs.bk
 Cargo.lock.tmp
 
@@ -35,11 +40,18 @@ Desktop.ini
 *.log
 *.tmp
 *.temp
+.audit-*
 .cache/
 
 # Local binaries / installer artifacts
 *.exe
+*.dll
+*.lib
+*.pdb
 *.msi
 *.msix
 *.appx
 *.zip
+
+# Clones locales usados sólo para investigar arquitecturas externas.
+research/reference-implementations/*/

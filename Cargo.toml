@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/camera-domain",
+  "crates/camera-frame",
+  "crates/camera-host",
+  "crates/camera-processing",
+  "crates/camera-protocol",
+  "crates/windows-camera",
+  "src-tauri",
+]
+
+[workspace.dependencies]
+windows = "0.62.2"

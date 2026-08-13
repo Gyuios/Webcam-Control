@@ -3,97 +3,182 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Webcam</title>
+    <title>CameraTuner</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <svg class="tabler-sprite" aria-hidden="true">
+      <symbol id="tabler-camera" viewBox="0 0 24 24"><path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" /><path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></symbol>
+      <symbol id="tabler-moon" viewBox="0 0 24 24"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008" /></symbol>
+      <symbol id="tabler-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6l6 -6" /></symbol>
+      <symbol id="tabler-plus" viewBox="0 0 24 24"><path d="M12 5l0 14" /><path d="M5 12l14 0" /></symbol>
+      <symbol id="tabler-restore" viewBox="0 0 24 24"><path d="M3.06 13a9 9 0 1 0 .49 -4.087" /><path d="M3 4.001v5h5" /><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></symbol>
+      <symbol id="tabler-arrow-up" viewBox="0 0 24 24"><path d="M12 5l0 14" /><path d="M18 11l-6 -6" /><path d="M6 11l6 -6" /></symbol>
+      <symbol id="tabler-arrow-down" viewBox="0 0 24 24"><path d="M12 5l0 14" /><path d="M18 13l-6 6" /><path d="M6 13l6 6" /></symbol>
+      <symbol id="tabler-x" viewBox="0 0 24 24"><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></symbol>
+      <symbol id="tabler-bell" viewBox="0 0 24 24"><path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" /><path d="M9 17v1a3 3 0 0 0 6 0v-1" /></symbol>
+      <symbol id="tabler-alert-triangle" viewBox="0 0 24 24"><path d="M12 9v4" /><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0" /><path d="M12 16h.01" /></symbol>
+      <symbol id="tabler-trash" viewBox="0 0 24 24"><path d="M4 7l16 0" /><path d="M10 11l0 6" /><path d="M14 11l0 6" /><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /></symbol>
+      <symbol id="tabler-refresh" viewBox="0 0 24 24"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></symbol>
+      <symbol id="tabler-device-floppy" viewBox="0 0 24 24"><path d="M6 4h9l3 3v13h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M9 4v6h6v-6" /><path d="M9 20v-6h6v6" /></symbol>
+      <symbol id="tabler-adjustments" viewBox="0 0 24 24"><path d="M4 8h4" /><path d="M12 8h8" /><path d="M10 6v4" /><path d="M4 16h8" /><path d="M16 16h4" /><path d="M14 14v4" /></symbol>
+      <symbol id="tabler-filter" viewBox="0 0 24 24"><path d="M4 6h16" /><path d="M7 12h10" /><path d="M10 18h4" /></symbol>
+      <symbol id="tabler-player-play" viewBox="0 0 24 24"><path d="M7 4v16l13 -8z" /></symbol>
+      <symbol id="tabler-player-stop" viewBox="0 0 24 24"><path d="M6 6h12v12h-12z" /></symbol>
+      <symbol id="tabler-broadcast" viewBox="0 0 24 24"><path d="M18.364 5.636a9 9 0 0 1 0 12.728m-12.728 0a9 9 0 0 1 0 -12.728m9.9 2.828a5 5 0 0 1 0 7.072m-7.072 0a5 5 0 0 1 0 -7.072" /><path d="M12 12h.01" /></symbol>
+      <symbol id="tabler-external-link" viewBox="0 0 24 24"><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></symbol>
+      <symbol id="tabler-plug" viewBox="0 0 24 24"><path d="M9 12l6 0" /><path d="M12 9l0 6" /><path d="M5 6l3 0" /><path d="M16 6l3 0" /><path d="M6 3l0 3" /><path d="M18 3l0 3" /><path d="M7 6h10v4a5 5 0 0 1 -10 0z" /><path d="M12 15v6" /></symbol>
+      <symbol id="tabler-info-circle" viewBox="0 0 24 24"><path d="M12 9h.01" /><path d="M11 12h1v4h1" /><path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0 -18" /></symbol>
+    </svg>
+
     <main class="app-shell">
-      <header class="topbar">
+      <header class="appbar">
         <div class="brand">
-          <div class="brand-mark" aria-hidden="true">◉</div>
-          <div>
-            <h1>Control Webcam</h1>
-            <p>Configuración de imagen y cámara</p>
-          </div>
+          <div class="brand-mark" aria-hidden="true"><svg class="tabler-icon"><use href="#tabler-camera" /></svg></div>
+          <div class="brand-copy"><h1>CameraTuner</h1><span>Control de cámara</span></div>
         </div>
-        <label class="theme-switch" for="theme-toggle">
-          <span class="theme-icon">☾</span>
-          <span>Modo noche</span>
-          <input id="theme-toggle" type="checkbox" role="switch" />
-          <span class="switch-track"><span></span></span>
-        </label>
+        <div class="appbar-actions">
+          <button class="icon-button notification-button" id="notification-toggle" type="button" title="Notificaciones" aria-label="Abrir notificaciones" aria-controls="notification-panel" aria-expanded="false">
+            <svg class="tabler-icon" aria-hidden="true"><use href="#tabler-bell" /></svg><span id="notification-count" hidden>0</span>
+          </button>
+          <label class="theme-switch" for="theme-toggle" title="Cambiar tema">
+            <svg class="tabler-icon" aria-hidden="true"><use href="#tabler-moon" /></svg><span>Tema oscuro</span>
+            <input id="theme-toggle" type="checkbox" role="switch" aria-label="Usar tema oscuro" />
+            <span class="switch-track" aria-hidden="true"><span></span></span>
+          </label>
+        </div>
       </header>
 
-      <section class="device-bar surface">
-        <div class="device-row">
-          <label class="field-label" for="camera-select">Cámara</label>
-          <select id="camera-select" aria-label="Seleccionar cámara">
-            <option>Buscando cámaras…</option>
-          </select>
-          <button class="button button-secondary" id="refresh-cameras">Actualizar</button>
+      <section class="device-toolbar" aria-label="Dispositivo y perfil">
+        <div class="toolbar-group camera-group">
+          <label class="toolbar-label" for="camera-select">Cámara</label>
+          <select id="camera-select" aria-label="Seleccionar cámara"><option>Buscando cámaras…</option></select>
+          <button class="tool-button icon-only" id="refresh-cameras" type="button" title="Actualizar cámaras (F5)" aria-label="Actualizar cámaras"><svg class="tabler-icon"><use href="#tabler-refresh" /></svg></button>
         </div>
-        <div class="device-row profile-row">
-          <label class="field-label" for="profile-select">Perfil</label>
-          <select id="profile-select" aria-label="Seleccionar perfil">
-            <option value="">Sin perfil seleccionado</option>
-          </select>
-          <button class="button button-quiet" id="save-profile">Guardar</button>
-          <button class="button button-quiet danger" id="delete-profile">Eliminar</button>
-          <button class="button button-primary" id="restore-defaults">Restablecer todo</button>
+        <span class="toolbar-separator" aria-hidden="true"></span>
+        <div class="toolbar-group profile-group">
+          <label class="toolbar-label" for="profile-select">Perfil</label>
+          <select id="profile-select" aria-label="Seleccionar perfil"><option value="">Sin perfil</option></select>
+          <button class="tool-button" id="save-profile" type="button" disabled aria-keyshortcuts="Control+S" title="Guardar perfil (Ctrl+S)"><svg class="tabler-icon"><use href="#tabler-device-floppy" /></svg><span>Guardar</span></button>
+          <button class="tool-button icon-only danger" id="delete-profile" type="button" disabled title="Eliminar perfil" aria-label="Eliminar perfil"><svg class="tabler-icon"><use href="#tabler-trash" /></svg></button>
+          <button class="tool-button" id="restore-defaults" type="button" disabled title="Restablecer todos los controles del dispositivo"><svg class="tabler-icon"><use href="#tabler-restore" /></svg><span>Restablecer</span></button>
         </div>
       </section>
 
-      <section class="workspace">
-        <article class="settings-card surface">
-          <div class="card-heading">
-            <div>
-              <p class="eyebrow">IMAGEN</p>
-              <h2>Ajustes</h2>
-            </div>
-            <span class="connection" id="camera-state"><i></i> Listo para conectar</span>
-          </div>
-          <div id="control-list" class="control-list" aria-label="Ajustes de cámara"></div>
-        </article>
+      <section class="workspace" id="workspace">
+        <aside class="inspector surface" aria-labelledby="inspector-title">
+          <header class="panel-header">
+            <div class="panel-title"><svg class="tabler-icon" aria-hidden="true"><use href="#tabler-adjustments" /></svg><h2 id="inspector-title">Inspector de imagen</h2></div>
+            <span class="connection" id="camera-state" role="status" aria-live="polite"><i aria-hidden="true"></i> Listo para conectar</span>
+          </header>
+          <div class="inspector-scroll">
+            <details class="settings-section driver-section" data-panel="driver" open>
+              <summary>
+                <span class="section-title"><svg class="tabler-icon" aria-hidden="true"><use href="#tabler-adjustments" /></svg><span><b>Controles de cámara</b><small>Ajustes del dispositivo</small></span></span>
+                <svg class="tabler-icon section-chevron" aria-hidden="true"><use href="#tabler-chevron-down" /></svg>
+              </summary>
+              <div class="section-body">
+                <div class="section-toolbar driver-toolbar"><button class="tool-button" id="driver-properties" type="button" disabled><svg class="tabler-icon"><use href="#tabler-external-link" /></svg><span>Panel del fabricante</span></button></div>
+                <div class="property-block capture-format-row">
+                  <label for="capture-format"><span><strong>Formato de captura</strong><small>Resolución · FPS · formato</small></span><select id="capture-format" disabled><option value="">Automático (recomendado)</option></select></label>
+                  <div class="capture-format-meta"><span id="native-format-summary">Consultando modos nativos…</span><button class="link-button" id="probe-native-backend" type="button" disabled>Diagnosticar modo</button></div>
+                </div>
+                <div id="control-list" class="control-list" aria-label="Ajustes del driver de cámara"></div>
+              </div>
+            </details>
 
-        <article class="preview-card surface">
-          <div class="card-heading preview-heading">
-            <div>
-              <p class="eyebrow">MONITOR</p>
-              <h2>Vista previa</h2>
-            </div>
-            <button class="button button-primary" id="preview-toggle">Iniciar vista previa</button>
+            <details class="settings-section processing-section" data-panel="filters" open>
+              <summary>
+                <span class="section-title"><svg class="tabler-icon" aria-hidden="true"><use href="#tabler-filter" /></svg><span><b>Filtros de software</b><small>Procesamiento digital</small></span></span>
+                <svg class="tabler-icon section-chevron" aria-hidden="true"><use href="#tabler-chevron-down" /></svg>
+              </summary>
+              <div class="section-body">
+                <div class="section-toolbar filter-toolbar"><button class="tool-button primary" id="add-filter" type="button" aria-haspopup="dialog"><svg class="tabler-icon"><use href="#tabler-plus" /></svg><span>Agregar filtro</span></button></div>
+                <div id="filter-list" class="filter-list" aria-label="Filtros de software"></div>
+              </div>
+            </details>
           </div>
-          <div class="preview-stage" id="preview-stage">
-            <div class="preview-empty" id="preview-empty">
-              <div class="camera-glyph">◉</div>
-              <strong>Vista previa desactivada</strong>
-              <span>Selecciona una cámara y activa el monitor.</span>
+        </aside>
+
+        <div class="workspace-splitter" id="workspace-splitter" role="separator" aria-label="Redimensionar inspector" aria-orientation="vertical" aria-valuemin="360" aria-valuemax="620" tabindex="0"><span></span></div>
+
+        <section class="monitor-column">
+          <article class="preview-panel surface">
+            <header class="panel-header">
+              <div class="panel-title"><svg class="tabler-icon" aria-hidden="true"><use href="#tabler-camera" /></svg><h2>Monitor</h2></div>
+              <button class="tool-button primary" id="preview-toggle" type="button" disabled><svg class="tabler-icon" aria-hidden="true"><use data-button-icon href="#tabler-player-play" /></svg><span data-button-label>Iniciar vista previa</span></button>
+            </header>
+            <div class="preview-stage" id="preview-stage">
+              <div class="preview-empty" id="preview-empty"><div class="camera-glyph" aria-hidden="true"><svg class="tabler-icon"><use href="#tabler-camera" /></svg></div><strong>Monitor inactivo</strong><span>Selecciona una cámara e inicia la vista previa.</span></div>
+              <img id="preview-image" class="preview-image" alt="Vista previa en directo de la cámara" draggable="false" hidden />
+              <div class="preview-grid" aria-hidden="true"></div>
             </div>
-            <img id="preview-image" class="preview-image" alt="Vista previa en directo de la cámara" hidden />
-            <div class="preview-grid" aria-hidden="true"></div>
-          </div>
-          <footer class="preview-footer">
-            <span id="preview-status">Sin transmisión</span>
-            <span>16:9 · Ajuste automático</span>
-          </footer>
-        </article>
+            <footer class="monitor-status"><span id="preview-status" role="status" aria-live="polite"><i aria-hidden="true"></i> Sin transmisión</span><span id="preview-mode">Vista previa optimizada</span></footer>
+          </article>
+
+          <section class="output-panel surface" aria-labelledby="virtual-camera-title">
+            <header class="panel-header output-heading">
+              <div class="panel-title"><svg class="tabler-icon" aria-hidden="true"><use href="#tabler-broadcast" /></svg><h2 id="virtual-camera-title">Salida virtual</h2></div>
+              <span class="connection" id="virtual-camera-state" role="status" aria-live="polite"><i aria-hidden="true"></i> Comprobando componente…</span>
+            </header>
+            <div class="output-body">
+              <label class="output-field" for="output-quality"><span>Reescalado</span><select id="output-quality"><option value="none">Desactivado · resolución de entrada</option><option value="ai" disabled>IA · Windows ML (próximamente)</option></select></label>
+              <div class="output-actions">
+                <button class="tool-button" id="install-virtual-camera" type="button" disabled><svg class="tabler-icon"><use href="#tabler-plug" /></svg><span>Instalar</span></button>
+                <button class="tool-button icon-only danger" id="remove-virtual-camera" type="button" disabled title="Quitar cámara virtual" aria-label="Quitar cámara virtual"><svg class="tabler-icon"><use href="#tabler-trash" /></svg></button>
+                <button class="tool-button primary" id="virtual-output-toggle" type="button" disabled><svg class="tabler-icon" aria-hidden="true"><use data-button-icon href="#tabler-broadcast" /></svg><span data-button-label>Activar salida</span></button>
+              </div>
+            </div>
+            <p class="output-help"><svg class="tabler-icon" aria-hidden="true"><use href="#tabler-info-circle" /></svg><span>Aparece en Discord, Zoom y otras aplicaciones como “CameraTuner Virtual Camera”.</span></p>
+          </section>
+        </section>
       </section>
-      <footer class="app-credit" aria-label="Información de copyright">
-        © 2026 Gyuios. Todos los derechos reservados.
-      </footer>
+
+      <footer class="statusbar" aria-label="Estado de la aplicación"><span>CameraTuner 0.1.0</span><span>Webcam-Control contributors · MIT</span><button class="status-action" id="open-diagnostics" type="button"><svg class="tabler-icon"><use href="#tabler-external-link" /></svg> Registros de diagnóstico</button></footer>
     </main>
+
     <template id="control-template">
       <section class="control-row">
-        <div class="control-name">
-          <strong></strong>
-          <span></span>
-        </div>
+        <div class="control-name"><strong></strong><span></span></div>
         <input class="slider" type="range" />
-        <button class="auto-button" type="button">Auto.</button>
-        <output class="value-box"></output>
-        <button class="reset-button" type="button" title="Restablecer este ajuste">↺</button>
+        <input class="value-box" type="number" inputmode="decimal" />
+        <button class="auto-button" type="button">Auto</button>
+        <button class="reset-button" type="button" title="Restablecer este ajuste" aria-label="Restablecer este ajuste"><svg class="tabler-icon"><use href="#tabler-restore" /></svg></button>
       </section>
     </template>
-    <script src="app.js"></script>
+
+    <template id="filter-template">
+      <article class="filter-node">
+        <header class="filter-node-header">
+          <div class="filter-node-title"><strong></strong><span></span></div>
+          <label class="node-enabled" title="Activar o desactivar sin quitar"><input type="checkbox" checked aria-label="Activar filtro" /><span></span></label>
+          <button class="node-move" data-direction="up" type="button" title="Mover arriba" aria-label="Mover filtro arriba"><svg class="tabler-icon"><use href="#tabler-arrow-up" /></svg></button>
+          <button class="node-move" data-direction="down" type="button" title="Mover abajo" aria-label="Mover filtro abajo"><svg class="tabler-icon"><use href="#tabler-arrow-down" /></svg></button>
+          <button class="node-remove" type="button" title="Quitar filtro" aria-label="Quitar filtro"><svg class="tabler-icon"><use href="#tabler-x" /></svg></button>
+        </header>
+        <div class="filter-node-controls"></div>
+      </article>
+    </template>
+
+    <dialog id="filter-catalog" class="app-dialog filter-catalog" aria-labelledby="filter-catalog-title">
+      <form method="dialog" class="dialog-header"><div><span class="dialog-kicker">Procesamiento de imagen</span><h2 id="filter-catalog-title">Agregar filtro</h2></div><button class="dialog-close" value="cancel" aria-label="Cerrar"><svg class="tabler-icon"><use href="#tabler-x" /></svg></button></form>
+      <div class="dialog-content"><p class="dialog-description">Selecciona un efecto. Puedes añadirlo más de una vez.</p><section class="catalog-section"><h3>Filtros incluidos</h3><div id="filter-catalog-native" class="filter-catalog-list"></div></section><section class="catalog-section plugin-catalog-section"><div class="plugin-catalog-heading"><div><h3>Plugins instalados</h3><p>Disponibles en todas tus sesiones.</p></div><label class="tool-button plugin-install-button" for="filter-plugin-file"><svg class="tabler-icon"><use href="#tabler-plus" /></svg><span>Instalar plugin</span></label><input id="filter-plugin-file" type="file" accept=".json,application/json" hidden /></div><div id="filter-catalog-plugins" class="filter-catalog-list"></div><p id="filter-plugins-empty" class="catalog-empty">No hay plugins instalados.</p></section></div>
+    </dialog>
+
+    <dialog id="profile-dialog" class="app-dialog compact-dialog" aria-labelledby="profile-dialog-title">
+      <form id="profile-form">
+        <header class="dialog-header"><div><span class="dialog-kicker">Configuración actual</span><h2 id="profile-dialog-title">Guardar perfil</h2></div><button class="dialog-close" id="profile-dialog-close" type="button" aria-label="Cerrar"><svg class="tabler-icon"><use href="#tabler-x" /></svg></button></header>
+        <div class="dialog-content"><label class="dialog-field" for="profile-name"><span>Nombre</span><input id="profile-name" type="text" maxlength="80" autocomplete="off" required /></label><p id="profile-warning" class="dialog-warning" hidden>Ya existe un perfil con este nombre. Se reemplazará su contenido.</p></div>
+        <footer class="dialog-actions"><button class="tool-button" id="profile-cancel" type="button">Cancelar</button><button class="tool-button primary" id="profile-submit" type="submit"><svg class="tabler-icon"><use href="#tabler-device-floppy" /></svg><span>Guardar perfil</span></button></footer>
+      </form>
+    </dialog>
+
+    <dialog id="confirm-dialog" class="app-dialog compact-dialog" aria-labelledby="confirm-title">
+      <form method="dialog"><header class="dialog-header"><div><span class="dialog-kicker">Confirmación</span><h2 id="confirm-title">Confirmar acción</h2></div><button class="dialog-close" value="cancel" aria-label="Cerrar"><svg class="tabler-icon"><use href="#tabler-x" /></svg></button></header><div class="dialog-content"><p id="confirm-message" class="confirm-message"></p></div><footer class="dialog-actions"><button class="tool-button" id="confirm-cancel" value="cancel">Cancelar</button><button class="tool-button danger-solid" id="confirm-submit" value="confirm">Confirmar</button></footer></form>
+    </dialog>
+
+    <aside id="notification-panel" class="notification-panel" hidden aria-hidden="true" aria-label="Historial de notificaciones"><header><div><span class="dialog-kicker">Actividad</span><h2>Notificaciones</h2></div><button id="clear-notifications" class="icon-button" type="button" title="Borrar historial" aria-label="Borrar historial"><svg class="tabler-icon"><use href="#tabler-trash" /></svg></button></header><div id="notification-list" class="notification-list"></div><footer><button class="link-button" id="notification-open-diagnostics" type="button">Abrir registros completos</button></footer></aside>
+    <div id="notification-toast" class="notification-toast" hidden role="alert"><svg class="tabler-icon" aria-hidden="true"><use href="#tabler-alert-triangle" /></svg><div><strong></strong><span></span></div></div>
+    <script type="module" src="app.js"></script>
   </body>
 </html>

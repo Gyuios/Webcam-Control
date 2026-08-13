@@ -1,16 +1,20 @@
 [package]
-name = "control-webcam"
+name = "camera-tuner"
 version = "0.1.0"
-description = "Control moderno para webcams DirectShow"
-authors = ["Gyuios"]
-license = "Proprietary"
+description = "Control y cámara virtual para webcams en Windows"
+authors = ["Webcam-Control contributors"]
+license = "MIT"
 edition = "2021"
 
 [build-dependencies]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
+camera-domain = { path = "../crates/camera-domain" }
+camera-frame = { path = "../crates/camera-frame" }
+camera-processing = { path = "../crates/camera-processing" }
+camera-protocol = { path = "../crates/camera-protocol" }
+image = { version = "0.25", default-features = false, features = ["jpeg"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tauri = { version = "2", features = ["tray-icon"] }
-base64 = "0.22"

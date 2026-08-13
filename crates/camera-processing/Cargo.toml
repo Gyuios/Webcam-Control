@@ -1,0 +1,9 @@
+[package]
+name = "camera-processing"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Deterministic CPU reference pipeline for Webcam-Control filters"
+
+[dependencies]
+camera-protocol = { path = "../camera-protocol" }

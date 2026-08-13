@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://webcam-control.dev/schemas/filter-plugin-v1.json",
+  "title": "CameraTuner declarative filter plugin v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "id", "name", "version", "processor"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schemaVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+    "version": { "type": "string", "minLength": 1, "maxLength": 32 },
+    "description": { "type": "string", "maxLength": 1024 },
+    "author": { "type": "string", "maxLength": 128 },
+    "parameters": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "label", "minimum", "maximum", "step", "defaultValue"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$" },
+          "label": { "type": "string", "minLength": 1, "maxLength": 80 },
+          "minimum": { "type": "number" },
+          "maximum": { "type": "number" },
+          "step": { "type": "number", "exclusiveMinimum": 0 },
+          "defaultValue": { "type": "number" }
+        }
+      }
+    },
+    "processor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "base"],
+      "properties": {
+        "type": { "const": "colorMatrix" },
+        "base": {
+          "type": "array",
+          "minItems": 12,
+          "maxItems": 12,
+          "items": { "type": "number" }
+        },
+        "modulations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["parameter", "coefficient", "scale"],
+            "properties": {
+              "parameter": { "type": "string" },
+              "coefficient": { "type": "integer", "minimum": 0, "maximum": 11 },
+              "scale": { "type": "number" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,17 +1,22 @@
 {
-  "name": "control-webcam-tauri",
+  "name": "camera-tuner",
   "private": true,
   "version": "0.1.0",
   "author": "Gyuios",
-  "copyright": "© 2026 Gyuios. Todos los derechos reservados.",
-  "license": "Proprietary",
+  "copyright": "Copyright © 2026 Webcam-Control contributors.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "tauri dev",
-    "build": "tauri build",
+    "dev:prepared": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-assets.ps1 && tauri dev",
+    "assets": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-assets.ps1",
+    "doctor": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/doctor.ps1",
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/prepare-assets.ps1 && tauri build",
+    "check": "node --check ui/app.js && node --check ui/lib.js && node --test tests/*.test.js && cargo test --workspace --all-targets",
+    "test": "node --test tests/*.test.js && cargo test --workspace --all-targets",
     "tauri": "tauri"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.0.0"
+    "@tauri-apps/cli": "2.11.4"
   }
 }
