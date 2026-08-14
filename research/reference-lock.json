@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-13",
+  "repositories": [
+    {
+      "name": "obs-studio",
+      "url": "https://github.com/obsproject/obs-studio.git",
+      "commit": "14e3dae77f9893a15d69c8b7bae57ac8ab961f59",
+      "license": "GPL-2.0-or-later",
+      "usage": "architecture-reference-only"
+    },
+    {
+      "name": "windows-camera",
+      "url": "https://github.com/microsoft/Windows-Camera.git",
+      "commit": "790ac218eba8b6995393e9cc9537dfd7730fdb83",
+      "license": "MIT",
+      "usage": "compatible-reference"
+    },
+    {
+      "name": "pyvirtualcam",
+      "url": "https://github.com/letmaik/pyvirtualcam.git",
+      "commit": "54f28813bb80220a2043bd4efbc562e08495f020",
+      "license": "GPL-2.0-or-later",
+      "usage": "architecture-reference-only"
+    },
+    {
+      "name": "spout2",
+      "url": "https://github.com/leadedge/Spout2.git",
+      "commit": "c2bcc12147711d12ace7d5f08e869d774d840f8a",
+      "license": "BSD-2-Clause",
+      "usage": "compatible-reference"
+    },
+    {
+      "name": "webcamoid",
+      "url": "https://github.com/webcamoid/webcamoid.git",
+      "commit": "22784c8c7f6561765f67266c0c783c81b070ac12",
+      "license": "GPL-3.0-or-later",
+      "usage": "architecture-reference-only"
+    },
+    {
+      "name": "akvirtualcamera",
+      "url": "https://github.com/webcamoid/akvirtualcamera.git",
+      "commit": "9cf77ae6379e5f635255f4b377478d388a46a3b2",
+      "license": "GPL-3.0-or-later",
+      "usage": "architecture-reference-only"
+    },
+    {
+      "name": "unitycapture-derived",
+      "url": "https://github.com/huahuahuage/Virtual-Camera-For-Windows.git",
+      "commit": "5fd6251dd712c44751e016dce05bc18e6e218669",
+      "license": "MIT",
+      "usage": "compatible-reference"
+    },
+    {
+      "name": "libyuv",
+      "url": "https://chromium.googlesource.com/libyuv/libyuv",
+      "commit": "2e58f4b9715045208fe9094fe1739f64887db7ef",
+      "license": "BSD-3-Clause",
+      "usage": "candidate-dependency"
+    },
+    {
+      "name": "onnxruntime",
+      "url": "https://github.com/microsoft/onnxruntime.git",
+      "commit": "874867184e7d5c497ebc546efd77f7ba636f3014",
+      "license": "MIT",
+      "usage": "candidate-optional-dependency"
+    },
+    {
+      "name": "directml",
+      "url": "https://github.com/microsoft/DirectML.git",
+      "commit": "8700779fe7a09ea7a007cf3d7ab4293c78e41017",
+      "license": "MIT",
+      "usage": "candidate-optional-dependency"
+    },
+    {
+      "name": "ffmpeg",
+      "url": "https://github.com/FFmpeg/FFmpeg.git",
+      "commit": "8b4fad11acfc958dfde29fb0799d3ca1818bbbf7",
+      "license": "LGPL-2.1-or-later by default; optional GPL components",
+      "usage": "optional-fallback-reference"
+    }
+  ]
+}

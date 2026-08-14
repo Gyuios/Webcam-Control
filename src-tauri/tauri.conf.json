@@ -1,15 +1,15 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Control Webcam",
+  "productName": "CameraTuner",
   "version": "0.1.0",
-  "identifier": "com.minec.controlwebcam",
+  "identifier": "com.gyuios.cameratuner",
   "build": {
     "frontendDist": "../ui"
   },
   "app": {
     "windows": [
       {
-        "title": "Control Webcam",
+        "title": "CameraTuner",
         "width": 1280,
         "height": 780,
         "minWidth": 1040,
@@ -19,26 +19,45 @@
       }
     ],
     "security": {
-      "csp": null
+      "csp": {
+        "default-src": "'self' customprotocol: asset:",
+        "connect-src": "ipc: http://ipc.localhost",
+        "img-src": "'self' asset: http://asset.localhost blob: data:",
+        "style-src": "'self' 'unsafe-inline'",
+        "script-src": "'self'"
+      },
+      "freezePrototype": true
     },
     "withGlobalTauri": true
   },
   "bundle": {
     "active": true,
-    "targets": "all",
-    "publisher": "Gyuios",
-    "copyright": "© 2026 Gyuios. Todos los derechos reservados.",
+    "targets": [
+      "nsis"
+    ],
+    "publisher": "Webcam-Control contributors",
+    "copyright": "Copyright © 2026 Webcam-Control contributors.",
     "icon": [
       "icons/app-icon.ico",
       "icons/app-icon.png"
     ],
     "resources": [
       "binaries/control-webcam-bridge-x86_64-pc-windows-msvc.exe",
-      "binaries/ffmpeg.exe"
+      "binaries/camera-tuner-camera-host-x86_64-pc-windows-msvc.exe",
+      "binaries/camera-tuner-media-source.dll",
+      "binaries/camera-tuner-virtual-camera-x86_64-pc-windows-msvc.exe",
+      "../THIRD_PARTY_NOTICES.md"
     ],
     "windows": {
       "nsis": {
-        "installerIcon": "icons/app-icon.ico"
+        "installerIcon": "icons/app-icon.ico",
+        "installMode": "perMachine",
+        "installerHooks": "./windows/installer-hooks.nsh",
+        "languages": [
+          "Spanish",
+          "English"
+        ],
+        "displayLanguageSelector": true
       }
     }
   }
